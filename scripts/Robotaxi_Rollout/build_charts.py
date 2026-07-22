@@ -55,12 +55,15 @@ def pad_top(ax, factor=1.18):
     ax.set_ylim(bottom=0, top=ax.get_ylim()[1] * factor)
 
 
-def annotate_events(ax, events, color, y_levels=(0.80, 0.68, 0.56, 0.44), fontsize=7.5, cluster_days=21):
-    """events: list of (date, label). Events within `cluster_days` of each other are merged
-    into one label (comma-joined) so simultaneous/near-simultaneous launches or disclosures
-    (e.g. a 4-city day, or several regulatory filings within a few weeks) don't render as
-    overlapping vertical text. Draws one vertical line + staggered rotated label per cluster,
-    anchored at the cluster's earliest date."""
+def annotate_events(ax, events, color, y_levels=(0.80, 0.68, 0.56, 0.44), fontsize=7, cluster_days=10):
+    """events: list of (date, label). Events within `cluster_days` of each other are grouped
+    onto one vertical line (so a 4-city launch day or several regulatory filings a few weeks
+    apart don't each get their own dashed line), but each label is drawn as its OWN short
+    rotated text, fanned out with a small horizontal step — never comma-joined into one long
+    string. A joined string is exactly what ran off the bottom of the axes before: long
+    combined labels have to grow far enough downward to spell themselves out, and that
+    downward run eventually exceeds the axes and gets clipped by the figure edge. Fanning
+    keeps every label's own vertical extent short regardless of how many events cluster."""
     ordered = sorted(((pd.Timestamp(d), lbl) for d, lbl in events), key=lambda e: e[0])
     clusters = []
     for date, label in ordered:
@@ -71,11 +74,12 @@ def annotate_events(ax, events, color, y_levels=(0.80, 0.68, 0.56, 0.44), fontsi
     for i, (date, labels) in enumerate(clusters):
         ax.axvline(date, color=color, alpha=0.25, lw=0.9, linestyle="--", zorder=1)
         y = y_levels[i % len(y_levels)]
-        ax.annotate(
-            ", ".join(labels), xy=(date, y), xycoords=("data", "axes fraction"),
-            xytext=(4, 0), textcoords="offset points",
-            rotation=90, fontsize=fontsize, color=color, ha="left", va="top", alpha=0.9,
-        )
+        for j, label in enumerate(labels):
+            ax.annotate(
+                label, xy=(date, y), xycoords=("data", "axes fraction"),
+                xytext=(4 + j * 13, 0), textcoords="offset points",
+                rotation=90, fontsize=fontsize, color=color, ha="left", va="top", alpha=0.9,
+            )
 
 
 # ---------------------------------------------------------------------------
@@ -106,6 +110,14 @@ def load_company(name):
 tesla = load_company("tesla")
 waymo = load_company("waymo")
 
+# Short display names for chart labels only (raw geography strings in the CSVs are left as
+# researched — these are purely so annotation text stays compact and readable).
+SHORT_GEO_NAME = {
+    "Phoenix/Chandler/Tempe/Mesa/Gilbert": "Phoenix",
+    "San Francisco Bay Area (SF/Oakland/Peninsula/South Bay)": "SF Bay Area",
+    "Los Angeles / West LA / Santa Monica / Culver City / South LA": "Los Angeles",
+}
+
 # ===========================================================================
 # 1. Geography-entry timeline (cumulative count vs time, labeled steps)
 # ===========================================================================
@@ -129,13 +141,10 @@ def draw_geography_timeline(company_key, company, annotated):
     ax.set_title(f"{company_key.title()} Robotaxi — geographies entered over time")
     style_date_axis(ax)
     ax.set_ylim(bottom=0)
+    pad_top(ax, factor=1.1)
     if annotated:
-        for date, names in grouped.items():
-            ax.annotate(
-                ", ".join(names), xy=(date, grouped.loc[:date].apply(len).sum()),
-                xytext=(6, -4), textcoords="offset points", fontsize=7,
-                rotation=35, ha="left", va="top", color="0.15",
-            )
+        events = [(date, SHORT_GEO_NAME.get(name, name)) for date, names in grouped.items() for name in names]
+        annotate_events(ax, events, "0.15", fontsize=7.5)
     suffix = "_annotated" if annotated else ""
     savefig(fig, OUT / company_key / f"geography_timeline{suffix}.png")
 
@@ -191,7 +200,7 @@ def area_events_for_annotation(area_df, exclude_geo=()):
     df = area_df[~area_df["geography"].isin(list(exclude_geo) + ["ALL_COMPANY_STATED"])].copy()
     df = df[~df["event"].str.contains("incremental", case=False, na=False)]
     df = df.dropna(subset=["area_sq_mi"])
-    return [(row.date, f"{row.geography} ({row.area_sq_mi:g} mi²)") for row in df.itertuples()]
+    return [(row.date, row.geography) for row in df.itertuples()]
 
 
 def draw_service_area(company_key, company, annotated, exclude_geo=()):
@@ -289,8 +298,8 @@ def draw_tesla_fleet(annotated):
     pad_top(ax)
     ax.legend(loc="lower right", fontsize=8)
     if annotated:
-        events = [(r.date, f"{r.geography.split(' (')[0]}: {r.fleet_size:g}") for r in
-                  pd.concat([claim, txdmv]).itertuples()]
+        events = [(r.date, f"Musk claim: {r.fleet_size:g}") for r in claim.itertuples()]
+        events += [(r.date, f"TX DMV: {r.fleet_size:g}") for r in txdmv.itertuples()]
         annotate_events(ax, events, "0.15")
     suffix = "_annotated" if annotated else ""
     savefig(fig, OUT / "tesla" / f"fleet_size{suffix}.png")
@@ -317,14 +326,13 @@ def draw_waymo_fleet(annotated):
     pad_top(ax)
     ax.legend(loc="upper left", fontsize=8)
     if annotated:
-        short_geo = {
-            "ALL_COMPANY": "Company total",
-            "California (CPUC-registered)": "CA (CPUC-registered)",
-            "Texas (TxDMV registry)": "TX (TxDMV registry)",
-            "US_ESTIMATE_THIRDPARTY": "US (3rd-party est.)",
-        }
-        events = [(r.date, f"{short_geo.get(r.geography, r.geography)}: {r.fleet_size:g}") for r in
-                  pd.concat([official, components]).itertuples()]
+        # Only label the official company-wide line + the TX DMV regulatory line by name;
+        # the regional component diamonds stay on the chart (and in the legend) but unlabeled
+        # in text — with 3 more of them in the same crowded 2025-2026 window, spelling each
+        # one out by name was the main source of overlapping text.
+        events = [(r.date, f"{r.fleet_size:g}") for r in official.itertuples()]
+        txdmv = components[components["geography"].str.contains("TxDMV", na=False)]
+        events += [(r.date, f"TX DMV: {r.fleet_size:g}") for r in txdmv.itertuples()]
         annotate_events(ax, events, "0.15", fontsize=7)
     suffix = "_annotated" if annotated else ""
     savefig(fig, OUT / "waymo" / f"fleet_size{suffix}.png")
