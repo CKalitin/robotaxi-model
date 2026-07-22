@@ -41,9 +41,13 @@ def savefig(fig, path):
 
 
 def style_date_axis(ax):
-    ax.xaxis.set_major_locator(mdates.YearLocator())
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
     ax.set_xlim(right=TODAY + pd.Timedelta(days=30))
+    # Granularity adapts to each chart's own span: a ~year-or-shorter Tesla chart gets
+    # monthly ticks, a multi-year Waymo chart gets yearly ticks — computed from the axes'
+    # actual xlim rather than a fixed rule, so it's correct per-chart automatically.
+    locator = mdates.AutoDateLocator(minticks=4, maxticks=9)
+    ax.xaxis.set_major_locator(locator)
+    ax.xaxis.set_major_formatter(mdates.ConciseDateFormatter(locator))
 
 
 def pad_top(ax, factor=1.18):
