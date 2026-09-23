@@ -1,9 +1,27 @@
 # Waymo tracker / watcher sites
 
-All entries below were verified by an actual WebSearch and/or WebFetch on 2026-07-22 (URLs are
-real search-result URLs, not invented). Several of these track both Waymo and Tesla — only the
-Waymo-relevant coverage is described here; see the sibling `tesla/` dataset for Tesla-specific
-detail.
+Original entries below were verified by WebSearch and/or WebFetch on 2026-07-22; this section was
+refreshed on 2026-09-23 (re-checked each existing tracker, plus one newly-discovered tracker,
+fsddb.com/robotaxi — see item 0 below). URLs are real search-result URLs, not invented. Several of
+these track both Waymo and Tesla — only the Waymo-relevant coverage is described here; see the
+sibling `tesla/` dataset for Tesla-specific detail.
+
+## 0. Texas Robotaxi Database (fsddb.com/robotaxi) — NEW as of this 2026-09-23 refresh
+- URL: https://fsddb.com/robotaxi
+- What it tracks: A live-updating frontend on the same underlying TxDMV SB2807 Automated Vehicle
+  Registry that texasavtracker.com also reads, but — unlike texasavtracker.com — its numeric table
+  rendered successfully via a plain WebFetch on 2026-09-23, making it the more directly usable of
+  the two Texas-registry trackers for this dataset's purposes.
+- Methodology: Same as texasavtracker.com (pulls from the state's mandatory AV registry), but adds
+  a per-vehicle-type breakdown (e.g., Jaguar I-PACE vs. Zeekr RT) and week-over-week / 30-day
+  growth deltas not seen on texasavtracker.com's static shell.
+- Data as observed 2026-09-23: Waymo at 989 total Texas-registered vehicles (767 Jaguar I-PACE +
+  222 Zeekr RT), "synced just now," +1 vehicle week-over-week, +298 vehicles (43%) over the prior
+  30 days, and "12 outstanding complaints filed with Texas DMV." Also lists Avride (344), Zoox (44).
+- Activity: Actively maintained; live sync timestamp confirms near-real-time updates from the
+  state registry.
+- Recommendation: for future refreshes of this dataset, try fsddb.com/robotaxi before
+  texasavtracker.com when a directly-renderable numeric Texas figure is needed.
 
 ## 1. Robotaxi Tracker (robotaxitracker.com)
 - URL: https://robotaxitracker.com/ (methodology: https://robotaxitracker.com/methodology ;
@@ -28,6 +46,9 @@ detail.
   see `fleet_tracker_scrape.csv` for what was and wasn't observable.
 - Activity: Appears actively maintained (has both a live web dashboard and a dedicated iOS app;
   covered favorably by The Driverless Digest as a useful third-party fleet-tracking project).
+  Re-checked 2026-09-23: WebFetch again returned only the static page title/shell
+  ("Robotaxi Tracker — Fleet Data & Service Maps"), not live counts — same limitation as before,
+  unchanged since 2026-07-22.
 
 ## 2. Robotaxi Safety Tracker (robotaxi-safety-tracker.com)
 - URL: https://robotaxi-safety-tracker.com/ (about: https://robotaxi-safety-tracker.com/about.html ;
@@ -58,7 +79,14 @@ detail.
   Atlanta, Austin, Dallas, Houston, San Antonio, Orlando, Miami, Nashville) but does not provide
   a per-city vehicle-count breakdown.
 - Activity: Page is dated "Robotaxi Status July 2026," suggesting monthly-ish refresh cadence; a
-  curated aggregator rather than an automated tracker.
+  curated aggregator rather than an automated tracker. Re-checked 2026-09-23: page had updated its
+  own dateline to "Robotaxi Status September 2026" (confirming the ~monthly cadence) and its
+  Waymo figures accordingly, now stating ~4,000 vehicles (~300 of them the new 6th-gen Ojai),
+  >500,000 weekly paid rides, ~4M weekly autonomous miles, 20M+ lifetime trips, and 14 active US
+  metros — see `fleet_tracker_scrape.csv` for the full 2026-09-23 snapshot. It also surfaced one
+  operationally useful detail not found in primary-source searches during this refresh: "freeway
+  rides, paused since late May 2026, began returning on July 29, 2026 after software updates
+  addressing freeway construction zones."
 
 ## 4. Texas Autonomous Fleet Tracker (Texas AV Tracker)
 - URL: https://texasavtracker.com/
@@ -82,7 +110,11 @@ detail.
   figure used in `fleet_tracker_scrape.csv` comes from a news article reading the same registry,
   not a direct scrape.
 - Activity: Very new (registry went live 2026-05-28 under a new state law) but appears
-  authoritative and actively maintained by virtue of its statutory basis.
+  authoritative and actively maintained by virtue of its statutory basis. Re-checked 2026-09-23:
+  still only the static page shell was retrievable via WebFetch (live table remains client-side
+  JS); see item 0 above (fsddb.com/robotaxi) for a directly-renderable frontend on the same
+  underlying registry, which on 2026-09-23 showed 989 Waymo vehicles statewide, up from the 577
+  figure reported via news coverage of this same registry on 2026-05-28.
 
 ## 5. AV Map (avmap.io)
 - URL: https://avmap.io/

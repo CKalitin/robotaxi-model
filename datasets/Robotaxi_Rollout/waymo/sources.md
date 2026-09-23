@@ -1,7 +1,90 @@
 # Sources used — Waymo dataset
 
-One URL per line with a one-line description of what was pulled from it. All were retrieved via
-WebSearch and/or WebFetch on 2026-07-22.
+One URL per line with a one-line description of what was pulled from it. Original list retrieved
+via WebSearch and/or WebFetch on 2026-07-22; the section below headed "Sources added in the
+2026-09-23 refresh" lists everything newly pulled for that refresh (status flips, new
+geographies, fleet/ridership updates, and the new population_covered.csv research).
+
+## Sources added in the 2026-09-23 refresh
+
+https://waymo.com/blog/2026/09/ride-in-las-vegas/ — Official Waymo post: Las Vegas public launch, 2026-09-14, ~24 sq mi, Ojai fleet.
+https://lasvegassun.com/news/2026/sep/14/waymo-offering-rides-to-public-joining-growing-aut/ — Las Vegas public launch coverage, 15th metro, 100k+ waitlist.
+https://news3lv.com/news/local/waymo-launches-self-driving-rides-in-las-vegas-covering-24-square-miles — Las Vegas launch, 24 sq mi detail.
+https://www.axios.com/local/san-diego/2026/09/01/san-diego-robotaxi-public-rides-service-area-airport-highways — San Diego public launch, 2026-09-01, ~50 sq mi.
+https://www.nbcsandiego.com/news/local/waymo-officially-launches-to-the-public-in-san-diego/4068069/ — San Diego launch, Ojai vehicle detail.
+https://www.kpbs.org/news/science-technology/2026/07/08/driverless-rideshare-company-waymo-to-soon-begin-autonomous-rides-in-san-diego — San Diego employee-only driverless phase, July 2026.
+https://www.9news.com/article/news/community/transportation/waymo-launches-denver-map-area/73-47825686-251b-40c7-9b3f-f56e8ddbbc4a — Denver public launch, 2026-09-01, ~60 sq mi, boundaries.
+https://www.axios.com/local/denver/2026/09/01/waymo-launches-denver — Denver launch coverage.
+https://coloradosun.com/2026/09/01/waymo-rides-begin-denver-sept-1/ — Denver launch coverage.
+https://www.businessobserverfl.com/news/2026/sep/01/waymo-driverless-taxis-tampa/ — Tampa public launch, 2026-09-01, ~50 sq mi.
+https://techcrunch.com/2026/09/01/waymo-accelerates-robotaxi-expansion-with-launches-in-denver-san-diego-and-tampa/ — Denver/SD/Tampa launch, 14 metros, ~4,000-vehicle fleet figure.
+https://waymo.com/blog/2026/09/ride-in-denver-san-diego-tampa/ — Official Waymo post: Denver/SD/Tampa launches.
+https://waymo.com/updates/ — Official Waymo current-status page; live city-by-city status as of 2026-09-23 (used to re-verify every testing-only geography).
+https://waymo.com/blog/2026/09/waymo-in-singapore/ — Official Waymo post: Singapore announced, 2026-09-17, targeting 2028 launch.
+https://www.lta.gov.sg/content/ltagov/en/newsroom/2026/9/news-releases/waymo-to-be-singapore-s-newest-autonomous-vehicle-operator.html — Singapore LTA press release.
+https://fortune.com/2026/09/17/waymo-launch-robotaxis-singapore-first-southeast-asia-market/ — Singapore coverage.
+https://waymo.com/blog/2026/08/waymo-in-munich/ — Official Waymo post: Munich announced, 2026-08-25, first EU market, targeting late 2027.
+https://techcrunch.com/2026/08/25/waymo-robotaxis-are-headed-to-munich/ — Munich announcement coverage.
+https://www.techtimes.com/articles/325713/20260827/waymo-picks-munich-first-eu-robotaxi-market-zero-german-permits-so-far.htm — Munich: zero German permits held as of the announcement.
+https://waymo.com/blog/2026/09/opening-tokyo-in-2027-with-nihon-kotsu-go/ — Official Waymo post: Tokyo commercial launch formally targeted 2027.
+https://www.japantimes.co.jp/business/2026/09/15/companies/waymo-tokyo-robotaxi-launch/ — Tokyo 2027 target coverage.
+https://zagdaily.com/featured/waymo-plans-september-london-launch-as-remote-operations-come-into-focus/ — London: Sept 2026 target not met, ~24 vehicles testing with safety drivers.
+https://www.opb.org/article/2026/07/30/portland-oregon-robotaxis-waymo-autonomous-vehicles/ — Portland regulatory-framework coverage.
+https://waymo.com/blog/shorts/waymo-in-portland/ — Official Waymo post: Portland mapping begins, 2026-04-28.
+https://portlandtribune.com/2026/04/28/self-driving-waymo-cars-arrive-in-portland-as-testing-begins-ahead-of-launch/ — Portland testing-kickoff coverage.
+https://electrek.co/2026/08/14/waymo-cpuc-approval-california-expansion-18-counties/ — CPUC 18-county CA approval, 2026-08-14; ~3,000-vehicle fleet figure, ~1,000 staged Ojai units.
+https://www.cbsnews.com/sacramento/news/waymo-approved-sacramento-san-diego-expand-los-angeles-bay-area/ — Sacramento/San Diego CPUC approval coverage.
+https://www.capradio.org/articles/2026/08/24/waymo-has-the-green-light-to-hit-sacramentos-streets-how-will-it-impact-street-safety/ — Sacramento CPUC-approved-but-not-yet-public status.
+https://www.kron4.com/news/bay-area/waymo-expands-service-to-cupertino-campbell/ — Bay Area Cupertino/Campbell expansion (WebFetch blocked; used via search summary only).
+https://www.azfamily.com/2026/08/13/waymo-expands-service-by-55-square-miles-adding-gilbert-chandler-neighborhoods/ — Phoenix +55 sq mi East Valley expansion, 2026-08-13.
+https://ktar.com/arizona-business/waymo-expands-phoenix-service-east-valley — Phoenix expansion, alternate coverage.
+https://waymo.com/blog/2024/06/largest-autonomous-ride-hail-territory-in-us-now-even-larger/ — Official Waymo post: Phoenix reaches 315 sq mi, 2024-06-05.
+https://www.statesman.com/story/business/technology/2025/07/17/waymo-expands-austin-service-to-90-square-miles/85257063007/ — Austin expands to 90 sq mi, 2025-07-17.
+https://www.kvue.com/article/tech/austin-waymo-service-area-expands/269-66d6874c-b914-4a0b-872f-f40dc8f3a5d2 — Austin expands to 140 sq mi, 2026-01-14.
+https://www.axios.com/local/houston/2026/05/13/waymo-houston-expansion-world-cup-nrg-stadium — Houston expands to ~50 sq mi ahead of World Cup, 2026-05-13.
+https://www.click2houston.com/news/local/2026/05/13/waymo-expands-houston-robotaxi-service-area-ahead-of-fifa-world-cup-events/ — Houston World Cup expansion, alternate coverage.
+https://techcrunch.com/2026/03/31/waymo-starts-robotaxi-services-at-san-antonio-international-airport/ — San Antonio airport service, 2026-03-31.
+https://techcrunch.com/2026/08/04/waymo-opens-up-robotaxi-service-in-dallas-to-everyone/ — Dallas waitlist removed, 2026-08-04.
+https://dallasinnovates.com/the-waitlist-is-over-waymo-offers-central-dallas-rides-to-anyone-on-the-app/ — Dallas waitlist removal, ~150,000 rides served pre-opening.
+https://www.click2houston.com/news/local/2026/08/21/waymo-opens-robotaxi-rides-to-anyone-with-the-app-in-houston/ — Houston waitlist removed, 2026-08-20/21.
+https://techcrunch.com/2026/05/12/waymo-issues-recall-to-deal-with-a-flooding-problem/ — Flooded-road recall and Dallas/Houston/San Antonio/Atlanta/Austin service pause, May 2026.
+https://www.mprnews.org/story/2026/09/22/minneapolis-considers-autonomous-vehicle-restrictions-as-waymo-test-driving-continues — Minneapolis AV-restriction ordinance under consideration.
+https://www.cbsnews.com/minnesota/news/waymo-future-minnesota-2026-legislative-session/ — MN legislature failed to pass AV-enabling bill in 2026 session.
+https://power98fm.com/2026/09/22/waymo-tests-driverless-cars-in-charlotte-with-no-launch-date-set/ — Charlotte: testing continues, no launch date, 2026-09-22.
+https://www.fox29.com/news/waymo-driverless-taxis-could-launch-philly-end-2026-amid-safety-job-concerns — Philadelphia: possible end-2026 launch, safety/job concerns.
+https://www.inquirer.com/opinion/commentary/waymo-robotaxis-philadelphia-performance-realtime-emergencies-20260805.html — Philadelphia opinion piece, Aug 2026, testing status.
+https://www.axios.com/local/nashville/2026/09/09/lyft-expands-waymo-robotaxi-partnership-nashville — Nashville: Lyft network dispatch partnership expansion, 2026-09-09.
+https://www.wkrn.com/news/local-news/nashville/flexdrive-by-lyft-waymo-hub/ — Nashville Flexdrive depot construction.
+https://fsddb.com/robotaxi — Texas Robotaxi Database: live TxDMV-registry frontend, 989 Waymo vehicles as of 2026-09-23 (new tracker, added to trackers.md).
+https://www.cnbc.com/2026/07/22/google-earnings-q2-goog-live-updates.html — Alphabet Q2 2026 earnings call coverage, 2026-07-22, ~500,000 weekly rides restated.
+https://thechargeport.com/robotaxi-tracker — Re-checked 2026-09-23; page updated to "September 2026" dateline, ~4,000-vehicle fleet figure.
+
+### Population-covered research (Census/density sources for population_covered.csv)
+https://www.census.gov/quickfacts/phoenixcityarizona — Phoenix city population/density (Census QuickFacts).
+https://en.wikipedia.org/wiki/Phoenix,_Arizona — Phoenix density cross-check (3,227.9/sq mi, 518.3 sq mi land area).
+https://en.wikipedia.org/wiki/Demographics_of_San_Francisco — SF density (18,633/sq mi) and land area (46.92 sq mi).
+https://en.wikipedia.org/wiki/San_Francisco — SF land area cross-check.
+http://censusreporter.org/profiles/16000US0668000-san-jose-ca/ — San Jose density/population cross-check.
+https://en.wikipedia.org/wiki/Los_Angeles — LA density cross-check.
+https://www.census.gov/quickfacts/fact/table/losangelescountycalifornia,CA/PST045222 — LA County QuickFacts (context).
+https://www.census.gov/quickfacts/fact/table/austincitytexas/LND110210 — Austin land-area QuickFacts.
+http://censusreporter.org/profiles/16000US1304000-atlanta-ga/ — Atlanta density (ACS 2024 1-yr, 3,843.7/sq mi).
+https://www.census.gov/quickfacts/fact/table/dallascitytexas/PST045224 — Dallas density QuickFacts.
+https://www.houstontx.gov/planning/Neighborhood/docs_pdfs/How_density.pdf — Houston density context.
+https://statisticalatlas.com/place/Texas/San-Antonio/Population — San Antonio density.
+https://statisticalatlas.com/place/California/San-Diego/Population — San Diego density.
+http://censusreporter.org/profiles/16000US1253000-orlando-fl/ — Orlando density (ACS 2024, 3,013.8/sq mi).
+https://en.wikipedia.org/wiki/Demographics_of_Miami — Miami density (13,607/sq mi) and land area (36.0 sq mi).
+https://en.wikipedia.org/wiki/Coral_Gables,_Florida — Coral Gables density (3,805.5/sq mi), used for Miami's lower-density outer service-area zone.
+https://www.areavibes.com/nashville-tn/demographics/ — Nashville/Davidson density (1,454/sq mi).
+https://en.wikipedia.org/wiki/Denver — Denver density (4,674/sq mi, 2020 Census).
+https://www.areavibes.com/las+vegas-nv/demographics/ — Las Vegas density (4,785.7/sq mi).
+https://statisticalatlas.com/place/Florida/Tampa/Population — Tampa density.
+https://www.areavibes.com/austin-tx/demographics/ — Austin density cross-check.
+https://en.wikipedia.org/wiki/Chandler,_Arizona — Chandler AZ density (4,276.2/sq mi), Phoenix East Valley context.
+https://en.wikipedia.org/wiki/Gilbert,_Arizona — Gilbert AZ density (~3,890/sq mi), Phoenix East Valley context.
+https://www.city-data.com/city/Mountain-View-California.html — Mountain View density (7,238/sq mi), Bay Area Peninsula blend.
+https://en.wikipedia.org/wiki/Sunnyvale,_California — Sunnyvale density (7,062/sq mi), Bay Area Peninsula blend.
 
 https://waymo.com/blog/2020/10/waymo-is-opening-its-fully-driverless-service-in-phoenix/ — Official Waymo announcement: fully driverless public service opens in Phoenix, 2020-10-08.
 https://www.washingtonpost.com/technology/2020/10/08/waymo-driverless-rides/ — Contemporaneous coverage of the Oct 2020 Phoenix driverless-public launch.
