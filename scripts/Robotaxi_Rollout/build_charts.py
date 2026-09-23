@@ -15,8 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "datasets" / "Robotaxi_Rollout"
 OUT = DATA / "charts"
-TODAY = pd.Timestamp("2026-07-22")
-SOURCE_NOTE = "Source: datasets/Robotaxi_Rollout/ (this repo) — official disclosures + community trackers, compiled 2026-07-22"
+TODAY = pd.Timestamp("2026-09-23")
+SOURCE_NOTE = "Source: datasets/Robotaxi_Rollout/ (this repo) — official disclosures + community trackers, compiled 2026-09-23"
 
 COLORS = {"tesla": "#CC0000", "waymo": "#4285F4"}
 
@@ -55,7 +55,7 @@ def pad_top(ax, factor=1.18):
     ax.set_ylim(bottom=0, top=ax.get_ylim()[1] * factor)
 
 
-def annotate_events(ax, events, color, y_levels=(0.80, 0.68, 0.56, 0.44), fontsize=7, cluster_days=10):
+def annotate_events(ax, events, color, y_levels=(0.80, 0.68, 0.56, 0.44), fontsize=7, cluster_days=20):
     """events: list of (date, label). Events within `cluster_days` of each other are grouped
     onto one vertical line (so a 4-city launch day or several regulatory filings a few weeks
     apart don't each get their own dashed line), but each label is drawn as its OWN short
@@ -65,18 +65,22 @@ def annotate_events(ax, events, color, y_levels=(0.80, 0.68, 0.56, 0.44), fontsi
     downward run eventually exceeds the axes and gets clipped by the figure edge. Fanning
     keeps every label's own vertical extent short regardless of how many events cluster."""
     ordered = sorted(((pd.Timestamp(d), lbl) for d, lbl in events), key=lambda e: e[0])
-    clusters = []
+    clusters = []  # each entry: [anchor_date, last_date, labels]
     for date, label in ordered:
-        if clusters and (date - clusters[-1][0]).days <= cluster_days:
-            clusters[-1][1].append(label)
+        if clusters and (date - clusters[-1][1]).days <= cluster_days:
+            clusters[-1][2].append(label)
+            clusters[-1][1] = date  # chain-cluster: compare against the latest event, not
+            # the cluster's first one, so a run of events each <=cluster_days apart fully
+            # merges even if the run's total span exceeds cluster_days (e.g. three launches
+            # 19 and 13 days apart in turn span 32 days total but belong in one cluster).
         else:
-            clusters.append((date, [label]))
-    for i, (date, labels) in enumerate(clusters):
-        ax.axvline(date, color=color, alpha=0.25, lw=0.9, linestyle="--", zorder=1)
+            clusters.append([date, date, [label]])
+    for i, (anchor, _last, labels) in enumerate(clusters):
+        ax.axvline(anchor, color=color, alpha=0.25, lw=0.9, linestyle="--", zorder=1)
         y = y_levels[i % len(y_levels)]
         for j, label in enumerate(labels):
             ax.annotate(
-                label, xy=(date, y), xycoords=("data", "axes fraction"),
+                label, xy=(anchor, y), xycoords=("data", "axes fraction"),
                 xytext=(4 + j * 13, 0), textcoords="offset points",
                 rotation=90, fontsize=fontsize, color=color, ha="left", va="top", alpha=0.9,
             )
@@ -104,7 +108,9 @@ def load_company(name):
     area["date"] = pd.to_datetime(area["date"])
     fleet = pd.read_csv(DATA / "derived" / f"{name}_fleet_size_events.csv")
     fleet["date"] = pd.to_datetime(fleet["date"])
-    return dict(geo=geo, tracker=tracker, ridership=ridership, area=area, fleet=fleet)
+    population = pd.read_csv(DATA / name / "population_covered.csv")
+    population["date"] = pd.to_datetime(population["date"], format="mixed")
+    return dict(geo=geo, tracker=tracker, ridership=ridership, area=area, fleet=fleet, population=population)
 
 
 tesla = load_company("tesla")
@@ -396,5 +402,106 @@ draw_tesla_ridership(annotated=False)
 draw_tesla_ridership(annotated=True)
 draw_waymo_ridership(annotated=False)
 draw_waymo_ridership(annotated=True)
+
+# ===========================================================================
+# 5. Population covered vs time (plain, annotated, stacked; est. — see
+#    population_covered.csv in each company folder for per-row methodology)
+# ===========================================================================
+
+def _pop_formatter(v, _):
+    return f"{v/1e6:.1f}M" if v >= 1e6 else f"{v/1e3:.0f}k"
+
+
+def build_population_grid(pop_df, exclude_geo=()):
+    """Same forward-fill-from-zero approach as build_area_grid, but for
+    population_covered.csv, which has no 'incremental' rows and no ALL_COMPANY_STATED
+    equivalent to filter out."""
+    df = pop_df[~pop_df["geography"].isin(exclude_geo)].copy()
+    df = df.dropna(subset=["population_covered"])
+    if df.empty:
+        return None, None
+    start = df["date"].min() - pd.Timedelta(days=10)
+    grid = pd.date_range(start, TODAY, freq="D")
+    wide = pd.DataFrame(index=grid)
+    for geo, sub in df.groupby("geography"):
+        sub = sub.sort_values("date")
+        s = pd.Series(sub["population_covered"].values, index=sub["date"].values)
+        s = s.reindex(grid, method=None)
+        s = s.combine_first(pd.Series(0.0, index=[grid[0]]))
+        s = s.ffill().fillna(0.0)
+        wide[geo] = s
+    return grid, wide
+
+
+def population_events_for_annotation(pop_df, exclude_geo=()):
+    df = pop_df[~pop_df["geography"].isin(exclude_geo)].copy()
+    df = df.dropna(subset=["population_covered"])
+    df = df[df["population_covered"] > 0]  # skip the pre-launch "0, not applicable" rows
+    return [(row.date, SHORT_GEO_NAME.get(row.geography, row.geography)) for row in df.itertuples()]
+
+
+POPULATION_TITLE_NOTE = "est. — official figures where stated, Census-density-based estimates otherwise; see population_covered.csv"
+
+
+def draw_population(company_key, company, annotated):
+    grid, wide = build_population_grid(company["population"])
+    fig, ax = plt.subplots(figsize=(11, 6))
+    total = wide.sum(axis=1)
+    ax.plot(grid, total, color=COLORS[company_key], lw=2.2, label="Sum of known geography population covered")
+
+    ax.set_ylabel("Population covered")
+    ax.set_title(f"{company_key.title()} Robotaxi — population covered over time\n({POPULATION_TITLE_NOTE})")
+    ax.title.set_fontsize(10)
+    style_date_axis(ax)
+    ax.set_ylim(bottom=0)
+    pad_top(ax)
+    ax.yaxis.set_major_formatter(mticker.FuncFormatter(_pop_formatter))
+    ax.legend(loc="upper left")
+    if annotated:
+        annotate_events(ax, population_events_for_annotation(company["population"]), "0.2")
+    suffix = "_annotated" if annotated else ""
+    savefig(fig, OUT / company_key / f"population_covered{suffix}.png")
+
+
+def draw_population_stacked(company_key, company):
+    grid, wide = build_population_grid(company["population"])
+    fig, ax = plt.subplots(figsize=(11, 6.5))
+    cmap = plt.get_cmap("tab20")
+    cols = list(wide.columns)
+    labels = [SHORT_GEO_NAME.get(c, c) for c in cols]
+    ax.stackplot(grid, [wide[c].values for c in cols], labels=labels,
+                 colors=[cmap(i / max(len(cols) - 1, 1)) for i in range(len(cols))], alpha=0.9)
+    ax.set_ylabel("Population covered")
+    ax.set_title(f"{company_key.title()} Robotaxi — population covered by geography (stacked)\n({POPULATION_TITLE_NOTE})")
+    ax.title.set_fontsize(10)
+    style_date_axis(ax)
+    ax.set_ylim(bottom=0)
+    ax.yaxis.set_major_formatter(mticker.FuncFormatter(_pop_formatter))
+    ax.legend(loc="upper left", fontsize=7.5, ncol=2)
+    savefig(fig, OUT / company_key / "population_covered_stacked.png")
+
+
+for key, comp in (("tesla", tesla), ("waymo", waymo)):
+    draw_population(key, comp, annotated=False)
+    draw_population(key, comp, annotated=True)
+    draw_population_stacked(key, comp)
+
+
+def draw_population_comparison():
+    fig, ax = plt.subplots(figsize=(11, 6))
+    for key, comp in (("tesla", tesla), ("waymo", waymo)):
+        grid, wide = build_population_grid(comp["population"])
+        ax.plot(grid, wide.sum(axis=1), color=COLORS[key], lw=2.2, label=f"{key.title()} (sum of known geographies)")
+    ax.set_ylabel("Population covered")
+    ax.set_title(f"Tesla Robotaxi vs Waymo — population covered over time\n({POPULATION_TITLE_NOTE})")
+    ax.title.set_fontsize(11)
+    style_date_axis(ax)
+    ax.set_ylim(bottom=0)
+    ax.yaxis.set_major_formatter(mticker.FuncFormatter(_pop_formatter))
+    ax.legend(loc="upper left")
+    savefig(fig, OUT / "combined" / "population_covered_comparison.png")
+
+
+draw_population_comparison()
 
 print("\nDone.")
