@@ -1,18 +1,28 @@
 date,geography,area_sq_mi,event,source_url
 2018-12-05,Phoenix,50,"Waymo One commercial launch (~50 sq mi per later retrospective figures)",https://waymo.com/blog/2020/10/waymo-is-opening-its-fully-driverless-service-in-phoenix/
-2025-01-01,Phoenix,315,"Expanded to ~315 sq mi by 2025 (approx date; figure per driverlessdigest.com retrospective, exact expansion date not isolated)",https://www.thedriverlessdigest.com/p/waymos-2025-year-in-review-the-year
+2024-06-05,Phoenix,315,"Expanded to 315 sq mi (official Waymo blog figure)",https://waymo.com/blog/2024/06/largest-autonomous-ride-hail-territory-in-us-now-even-larger/
+2026-08-13,Phoenix,370,"Further ~55 sq mi East Valley expansion (Gilbert, additional Chandler, San Tan Ranch); some sources describe the increment as 45 sq mi / total as 'more than 350 sq mi' -- 370 used as the more specific figure",https://www.azfamily.com/2026/08/13/waymo-expands-service-by-55-square-miles-adding-gilbert-chandler-neighborhoods/
 2023-08-10,San Francisco Bay Area,,"CPUC grants 24/7 paid driverless permit for SF proper; sq mi not isolated from later Bay Area total",https://www.cpuc.ca.gov/news-and-updates/all-news/cpuc-approves-permits-for-cruise-and-waymo-to-charge-fares-for-passenger-service-in-sf-2023
 2025-03-11,San Francisco Bay Area,27,"Silicon Valley/Peninsula addition (Mountain View, Los Altos, Palo Alto, parts of Sunnyvale) -- incremental sq mi added, not cumulative",https://www.cnbc.com/2025/03/11/waymo-expands-its-robotaxi-service-in-the-san-francisco-bay-area.html
-2025-12-01,San Francisco Bay Area,260,"Total (cumulative) Bay Area service area ~260 sq mi as of late 2025 (approx date); supersedes incremental figures above -- use this as the Bay Area cumulative point, not a sum of the earlier rows",https://www.cnbc.com/2025/03/11/waymo-expands-its-robotaxi-service-in-the-san-francisco-bay-area.html
+2025-11-12,San Francisco Bay Area,260,"Total (cumulative) Bay Area service area ~260 sq mi after South Bay/San Jose and freeway access added",https://sfstandard.com/2025/11/12/waymo-will-now-drive-bay-area-freeways-san-jos/
+2026-05-01,San Francisco Bay Area,330,"Further South Bay expansion into Cupertino, Campbell, Willow Glen, Vista Park brings total past 330 sq mi (approx date, month precision only)",https://www.kron4.com/news/bay-area/waymo-expands-service-to-cupertino-campbell/
 2024-11-12,Los Angeles,80,"Public launch initial service area",https://www.roadtoautonomy.com/waymo-launch-los-angeles/
 2025-06-01,Los Angeles,120,"Expanded to 120+ sq mi by 2025 (approx date)",https://www.roadtoautonomy.com/waymo-launch-los-angeles/
 2025-03-04,Austin,37,"Public launch via Uber app, ahead of SXSW",https://www.cnbc.com/2025/03/04/waymo-uber-begin-offering-robotaxi-rides-in-austin-ahead-of-sxsw.html
+2025-07-17,Austin,90,"Expansion adding Crestview, Windsor Park, Sunset Valley, Franklin Park, The Domain, and Austin-Bergstrom Airport access",https://www.statesman.com/story/business/technology/2025/07/17/waymo-expands-austin-service-to-90-square-miles/85257063007/
+2026-01-14,Austin,140,"Expansion reaching south to Manchaca and more of east Austin/north of US-183",https://www.kvue.com/article/tech/austin-waymo-service-area-expands/269-66d6874c-b914-4a0b-872f-f40dc8f3a5d2
 2025-06-24,Atlanta,65,"Public launch via Uber app",https://www.cnbc.com/2025/06/24/uber-waymo-robotaxi-service-opens-to-passengers-in-atlanta.html
 2026-02-24,Dallas,50,"Select-rider launch",https://waymo.com/blog/2026/02/dallas-houston-san-antonio-orlando/
 2026-02-24,Houston,25,"Select-rider launch",https://waymo.com/blog/2026/02/dallas-houston-san-antonio-orlando/
+2026-05-13,Houston,50,"Nearly doubled ahead of the FIFA World Cup, adding NRG Stadium, EaDo, Texas Medical Center",https://www.click2houston.com/news/local/2026/05/13/waymo-expands-houston-robotaxi-service-area-ahead-of-fifa-world-cup-events/
 2026-02-24,San Antonio,60,"Select-rider launch",https://waymo.com/blog/2026/02/dallas-houston-san-antonio-orlando/
 2026-02-24,Orlando,60,"Select-rider launch",https://waymo.com/blog/2026/02/dallas-houston-san-antonio-orlando/
+2026-01-22,Miami,60,"Public launch (rolling invitations); Design District, Wynwood, Brickell, Coral Gables",https://www.cnbc.com/2026/01/22/waymo-launches-robotaxi-service-in-miami-extending-us-lead.html
 2026-04-07,Nashville,60,"Limited/interest-list public launch",https://www.newschannel5.com/news/state/tennessee/davidson-county/waymo-officially-launches-its-first-self-driving-car-public-rides-across-a-60-square-mile-nashville-area
+2026-09-01,San Diego,50,"Public launch (Logan Heights to Pacific Beach, Sunset Cliffs to Normal Heights)",https://www.axios.com/local/san-diego/2026/09/01/san-diego-robotaxi-public-rides-service-area-airport-highways
+2026-09-01,Denver,60,"Public launch (US-36/I-25 junction to University of Denver, Sheridan Blvd to Central Park)",https://www.9news.com/article/news/community/transportation/waymo-launches-denver-map-area/73-47825686-251b-40c7-9b3f-f56e8ddbbc4a
+2026-09-01,Tampa,50,"Public launch (Hyde Park through Northwest Park, Temple Crest, Westshore, to Highland Pines)",https://www.businessobserverfl.com/news/2026/sep/01/waymo-driverless-taxis-tampa/
+2026-09-14,Las Vegas,24,"Public launch (Boulder Junction to Sahara Ave along the Strip)",https://waymo.com/blog/2026/09/ride-in-las-vegas/
 2026-04-14,London,100,"Safety-driver TESTING area only, not commercial service -- included for completeness but should be excluded or flagged when summing commercial service area",https://techcrunch.com/2026/04/14/london-gets-closer-to-its-first-robotaxi-service-as-waymo-begins-testing/
 2026-01-01,ALL_COMPANY_STATED,1100,"Company-referenced baseline total US service area before the May 2026 jump (approx date; figure is the 'before' side of the 27% increase reported 2026-05-13)",https://electrek.co/2026/05/13/waymo-expands-coverage-1400-square-miles-11-cities/
 2026-05-13,ALL_COMPANY_STATED,1400,"Total US service area passes 1,400 sq mi across 11 commercial cities (27% jump), 'larger than Rhode Island'",https://electrek.co/2026/05/13/waymo-expands-coverage-1400-square-miles-11-cities/
