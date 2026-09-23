@@ -151,13 +151,90 @@ publish one).
   public or invite-only in either city at launch.
   [Not a Tesla App](https://www.notateslaapp.com/news/4470/tesla-robotaxi-launches-unsupervised-rides-in-orlando-tampa)
 
-- **2026-07-22** — Tesla's Q2 2026 earnings call is scheduled for 5:30pm ET this date (after this
-  dataset's research cutoff); expected to provide updated Robotaxi fleet/mileage figures not yet
-  reflected here.
-  [Not a Tesla App](https://www.notateslaapp.com/news/4453/teslas-2026-q2-earnings-call-how-to-listen)
+- **2026-07-22** — Tesla's Q2 2026 earnings call takes place at 5:30pm ET. Key Robotaxi
+  disclosures: cumulative paid Robotaxi mileage reached approximately 2.4-2.5 million miles;
+  cumulative UNSUPERVISED mileage reached 380,000 miles with "0 notable incidents"; unsupervised
+  operations now span 7 metro areas; Tesla says total Robotaxi miles driven are expected to
+  increase more than 10% per week; the fleet is running early builds of FSD v15.
+  [Not a Tesla App](https://www.notateslaapp.com/news/4481/summary-of-teslas-2026-q2-earnings-call-cybercab-fsd-ai4-and-more),
+  [Benzinga transcript](https://www.benzinga.com/news/26/09/61834353/full-transcript-tesla-q2-2026-earnings-call)
 
-## Not yet reached as of 2026-07-22
+*(This dataset's research cutoff was extended from 2026-07-22 to 2026-09-23; all entries below
+this line were added in the 2026-09-23 refresh.)*
+
+- **2026-08-14** — Waymo (not Tesla) wins CPUC approval to expand robotaxi operations across 18
+  California counties — noted here as competitive/regulatory context for Tesla's still-unpermitted
+  Bay Area status.
+  [Electrek](https://electrek.co/2026/08/14/waymo-cpuc-approval-california-expansion-18-counties/)
+
+- **2026-08-20/21** — The Nevada Transportation Authority unanimously approves commercial
+  Autonomous Vehicle Network Company (AVNC) permits for Tesla (up to 5,000 vehicles), Waymo
+  (1,000), and Uber (1,000) to operate in Clark County (Las Vegas). This is regulatory approval,
+  not a launch: all three still need vehicle inspections, insurance filings, and rate approval, and
+  have 120 days from approval (~mid-to-late December 2026) to begin commercial service.
+  [TechCrunch](https://techcrunch.com/2026/08/20/tesla-uber-and-waymo-all-get-the-ok-to-operate-thousands-of-robotaxis-in-nevada/),
+  [Tesla Oracle](https://www.teslaoracle.com/2026/08/21/tesla-tsla-obtains-approval-for-robotaxi-service-in-nevada-including-las-vegas/)
+
+- **2026-08-29** — Tesla more than doubles the Dallas geofence, from ~31 sq mi to ~81 sq mi (a
+  ~158-161% increase), extending west toward Irving/US-183 and south through downtown to I-35E.
+  [Not a Tesla App](https://www.notateslaapp.com/news/4632/tesla-expands-robotaxi-geofences-in-dallas-and-austin),
+  [Tesla Oracle](https://www.teslaoracle.com/2026/09/01/cybercabs-flood-the-streets-tesla-expands-austin-and-dallas-tx-geofence-areas-as-launch-nears/)
+
+- **2026-08-31** — Tesla expands the Austin geofence for the first time in nearly a year, by
+  roughly 9% (from ~244 to ~264 sq mi per Not a Tesla App; other outlets describe the resulting
+  area as ~288 sq mi for the same expansion), extending north toward Pflugerville along
+  US-183/I-35 — timed just ahead of the September 3 Cybercab launch event.
+  [Drive Tesla Canada](https://driveteslacanada.ca/news/tesla-robotaxi-austin-geofence-expansion/),
+  [Not a Tesla App](https://www.notateslaapp.com/news/4632/tesla-expands-robotaxi-geofences-in-dallas-and-austin)
+
+- **2026-09-03** — Tesla holds an invite-only Cybercab launch event at ACL Live in Austin (Musk
+  does not attend; no livestream materializes). The same day, Tesla announces Robotaxi has crossed
+  1,000,000 cumulative UNSUPERVISED miles — up from 380,000 at the Q2 earnings call six weeks
+  earlier (~620,000 miles added in that window) — with ~200 vehicles now reported operating
+  unsupervised across Austin/Dallas/Houston combined and zero notable safety incidents claimed to
+  date. NHTSA opens Audit Query AQ26002 into Tesla's FMVSS self-certification of the Cybercab this
+  same day.
+  [Motor1](https://www.motor1.com/news/805874/tesla-cybercab-robotaxi-launch-austin/),
+  [Electrek (1M miles)](https://electrek.co/2026/09/03/tesla-announces-1-million-unsupervised-miles-driven-by-robotaxi/),
+  [NHTSA press release](https://www.nhtsa.gov/press-releases/investigation-tesla-cybercab-self-certification)
+
+- **2026-09-04** — Paid Cybercab rides begin in a limited part of Austin — Tesla's purpose-built,
+  steering-wheel-free robotaxi enters commercial service for the first time. TX DMV Cybercab
+  registrations rise from 7 to 45 within the launch week.
+  [Teslarati](https://www.teslarati.com/tesla-surges-robotaxi-fleet-ahead-of-cybercab-launch-event/),
+  [TechCrunch](https://techcrunch.com/2026/09/04/feds-launch-investigation-into-teslas-cybercab-deployment/)
+
+- **2026-09-10** — NHTSA escalates Audit Query AQ26002 into a formal Special Order regarding the
+  Cybercab's federal safety-standard self-certification; Tesla's response is due 2026-09-30.
+  [Electrek](https://electrek.co/2026/09/04/tesla-cybercab-nhtsa-investigation-fmvss-certification/)
+
+- **2026-09-02** — Texas statewide DMV-registered Tesla AV count (Austin+Dallas+Houston combined)
+  reaches 420 vehicles (375 Model Y + 45 Cybercab), versus Waymo's 988 in Texas the same date (Tesla
+  added 258 registrations in the prior 30 days vs Waymo's 297).
+  [NextBigFuture](https://www.nextbigfuture.com/2026/09/tesla-robotaxi-fleet-hits-420-texas-registered-vehicles.html)
+
+- **2026-09-20** — A large number of Tesla Cybercabs are spotted in Houston for the first time in
+  volume, read by local coverage as a signal of a possible imminent Houston geofence
+  expansion/Cybercab rollout there — not yet confirmed as of this dataset's 2026-09-23 cutoff.
+  [Tesla Oracle](https://www.teslaoracle.com/2026/09/20/large-number-of-tesla-cybercab-robotaxis-spotted-in-houston-hinting-at-a-close-launch/)
+
+## Not yet reached as of 2026-09-23 (re-verified; no material change since 2026-07-22)
 - **Phoenix, AZ** — TNC (safety-driver) permit held since 2025-11-17; unsupervised/public launch
-  not yet confirmed. Staging fleet (~60 Model Ys) spotted ~April 2026.
-- **Las Vegas, NV** — AVNC commercial permit application pending regulatory review since
-  2026-06-05; not yet launched.
+  not yet confirmed. Staging fleet (~60 Model Ys) spotted ~April 2026. Still described by Tesla's
+  own Q2 2026 disclosure as "preparations underway," per thechargeport.com (last verified
+  2026-09-05).
+- **Las Vegas, NV** — AVNC commercial permit APPROVED 2026-08-20/21 (up to 5,000 vehicles), but
+  commercial service had not begun as of 2026-09-23; 120-day window to launch runs to roughly
+  mid-to-late December 2026.
+
+## Newly surfaced pre-launch testing markets (not on Tesla's official 7-city list), found 2026-09-23
+- **Charlotte, NC** — 14 Cybercabs + 14 Model Ys with TX plates staged in a lot (spotted late July
+  2026); Tesla posted a local "AI Safety Operator" job listing. No permit or launch date.
+  [Axios Charlotte](https://www.axios.com/local/charlotte/2026/07/27/tesla-cybercabs-robotaxis-waymo)
+- **New Orleans, LA** — Model Ys with Robotaxi-signature camera washers spotted testing; the city
+  itself has no ordinance yet permitting driverless ride-hailing (City Council expected to begin
+  drafting one only in fall 2026).
+  [Not a Tesla App](https://www.notateslaapp.com/news/4408/tesla-robotaxi-service-starts-testing-in-new-orleans),
+  [Axios New Orleans](https://www.axios.com/local/new-orleans/2026/06/15/waymo-testing-regulations-louisiana-city-council)
+- **San Antonio, TX** — named only by the open-robotaxi.vercel.app tracker as "in testing/permitting
+  phases"; no independent corroborating sighting or report found in this research pass.

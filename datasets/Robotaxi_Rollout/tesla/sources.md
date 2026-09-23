@@ -4,6 +4,92 @@ Flat list of every URL consulted during research on 2026-07-22, with what was dr
 Grouped loosely by topic for readability; order within a group is roughly chronological by the
 event covered, not by access order.
 
+## 2026-09-23 refresh — new sources consulted since the 2026-07-22 pass
+Dozens of fresh WebSearch/WebFetch calls were made on 2026-09-23 to re-verify the 2026-07-22
+research and extend coverage through the current date. New/updated URLs from this pass:
+
+- https://techcrunch.com/2026/08/20/tesla-uber-and-waymo-all-get-the-ok-to-operate-thousands-of-robotaxis-in-nevada/
+  — Nevada AVNC permit approval (Tesla up to 5,000 vehicles), 2026-08-20.
+- https://www.teslaoracle.com/2026/08/21/tesla-tsla-obtains-approval-for-robotaxi-service-in-nevada-including-las-vegas/
+  — corroborating Nevada approval detail.
+- https://www.engadget.com/2241379/nevada-allows-uber-tesla-waymo-paid-robotaxis/ — corroborating.
+- https://coyotecountrylv.com/2026/08/25/nevada-grants-tesla-approval-to-deploy-5000-robotaxis-in-clark-county/
+  — corroborating.
+- https://www.basenor.com/blogs/news/tesla-wins-nevada-robotaxi-permit-setting-up-las-vegas-launch
+  — corroborating.
+- https://www.gurufocus.com/news/9047750/tesla-tsla-uber-and-waymo-approved-for-robotaxi-services-in-las-vegas
+  — corroborating.
+- https://www.notateslaapp.com/news/4632/tesla-expands-robotaxi-geofences-in-dallas-and-austin —
+  Dallas (31→81 sq mi) and Austin (244→264 sq mi) geofence expansions, dated ~2026-08-29/31.
+- https://driveteslacanada.ca/news/tesla-robotaxi-austin-geofence-expansion/ — Austin geofence
+  expansion history retrospective (18-20 sq mi at launch → ~243-245 sq mi by 2025-10-28).
+- https://www.teslaoracle.com/2026/09/01/cybercabs-flood-the-streets-tesla-expands-austin-and-dallas-tx-geofence-areas-as-launch-nears/
+  — Austin (~288 sq mi, 9% larger) and Dallas (~80 sq mi, +158%) geofence figures, alternate
+  measurement to the notateslaapp figures above; both describe the same expansion event.
+- https://www.statesman.com/business/technology/article/tesla-robotaxi-austin-service-area-expansion-waymo-21017708.php
+  — surfaced in search re: Austin expansion (direct WebFetch returned HTTP 403; used via search
+  snippet only).
+- https://www.motor1.com/news/805874/tesla-cybercab-robotaxi-launch-austin/ — Cybercab launch
+  event detail, 2026-09-03.
+- https://www.notateslaapp.com/news/4643/teslas-cybercab-launch-event-how-to-watch-what-to-expect
+  — pre-event coverage.
+- https://www.forbes.com/sites/brookecrothers/2026/09/03/tesla-cybercab-launches-with-closed-event-surprising-some-fans/
+  — event outcome detail (no livestream, Musk absent).
+- https://www.teslarati.com/tesla-surges-robotaxi-fleet-ahead-of-cybercab-launch-event/ — fleet
+  surge to ~200 unsupervised vehicles, Cybercab TX registrations 7→45, ahead of the launch event.
+- https://electrek.co/2026/09/03/tesla-announces-1-million-unsupervised-miles-driven-by-robotaxi/
+  — 1,000,000 cumulative unsupervised miles milestone, 2026-09-03.
+- https://www.nhtsa.gov/press-releases/investigation-tesla-cybercab-self-certification — official
+  NHTSA press release, Audit Query AQ26002 (direct WebFetch returned HTTP 403; content obtained via
+  search-result summary and corroborating outlet coverage below).
+- https://www.motor1.com/news/807353/tesla-cybercab-under-nhtsa-probe/ — NHTSA audit detail.
+- https://www.insurancejournal.com/news/national/2026/09/04/884056.htm — NHTSA probe coverage.
+- https://electrek.co/2026/09/04/tesla-cybercab-nhtsa-investigation-fmvss-certification/ — NHTSA
+  audit detail, including escalation to a formal Special Order on 2026-09-10 (deadline 2026-09-30).
+- https://techcrunch.com/2026/09/04/feds-launch-investigation-into-teslas-cybercab-deployment/ —
+  corroborating NHTSA investigation coverage.
+- https://www.axios.com/2026/09/04/tesla-cybercab-nhtsa-regulatory — corroborating.
+- https://www.teslarati.com/tesla-cybercab-launch-nhtsa-attention-know-more/ — corroborating.
+- https://www.nextbigfuture.com/2026/09/tesla-robotaxi-fleet-hits-420-texas-registered-vehicles.html
+  — TX DMV registrations: Tesla 420 (375 Model Y + 45 Cybercab) vs Waymo 988, as of 2026-09-02.
+- https://texasavtracker.com/ — Texas Autonomous Fleet Tracker's current domain (moved from
+  `.pages.dev`); direct WebFetch again returned only unrendered loading placeholders.
+- https://thechargeport.com/robotaxi-tracker — re-fetched directly 2026-09-23; page now
+  self-titled "Robotaxi Status September 2026," last-verified date 2026-09-05; confirms 7 active
+  Tesla US metros plus Phoenix/Las Vegas still "Preparations Underway."
+- https://open-robotaxi.vercel.app/ — newly discovered independent tracker (self-dated
+  2026-08-31 snapshot); source of the Charlotte/New Orleans/San Antonio testing-market leads.
+- https://www.axios.com/local/charlotte/2026/07/27/tesla-cybercabs-robotaxis-waymo — Charlotte
+  staging (14 Cybercabs + 14 Model Ys), job posting for local AI Safety Operator.
+- https://www.notateslaapp.com/news/4408/tesla-robotaxi-service-starts-testing-in-new-orleans —
+  New Orleans testing detail (camera-washer-equipped Model Ys spotted).
+- https://www.axios.com/local/new-orleans/2026/06/15/waymo-testing-regulations-louisiana-city-council
+  — New Orleans regulatory status (no ordinance yet permitting driverless ride-hailing).
+- https://www.basenor.com/blogs/news/tesla-robotaxi-testing-spotted-in-new-orleans-with-camera-washers
+  — corroborating New Orleans detail.
+- https://electrek.co/2026/03/25/california-regulator-confirms-tesla-not-operating-autonomous-vehicle-service/
+  — CPUC reaffirms Tesla holds only a charter-party-carrier permit in CA, not an AV permit.
+- https://evxl.co/2026/03/27/tesla-cpuc-not-robotaxi-california-limo-permit/ — corroborating.
+- https://electrek.co/2026/08/14/waymo-cpuc-approval-california-expansion-18-counties/ — Waymo
+  (not Tesla) CPUC approval across 18 CA counties, competitive/regulatory context.
+- https://www.notateslaapp.com/news/4481/summary-of-teslas-2026-q2-earnings-call-cybercab-fsd-ai4-and-more
+  — Q2 2026 earnings call Robotaxi recap: 2.5M cumulative paid miles, 380,000 unsupervised miles,
+  7 metro areas, >10%/week growth target, FSD v15.
+- https://www.benzinga.com/news/26/09/61834353/full-transcript-tesla-q2-2026-earnings-call — full
+  Q2 2026 earnings call transcript (surfaced in search; used for cross-reference only).
+- https://x.com/TeslaZoa/status/2080065798417326276 — Q2 2026 earnings call summary thread
+  (surfaced in search; corroborating, not independently verified as primary).
+- https://www.teslaoracle.com/2026/09/20/large-number-of-tesla-cybercab-robotaxis-spotted-in-houston-hinting-at-a-close-launch/
+  — Cybercabs newly spotted in Houston in volume, 2026-09-20; Houston geofence detail (~21-24 sq
+  mi, Jersey Village/Willowbrook).
+- Census/population sources used for `population_covered.csv` (city population + land-area figures
+  behind each density-based estimate): census.gov QuickFacts pages for Austin, Dallas, Houston,
+  Miami, Orlando, and Tampa (several returned HTTP 403 on direct WebFetch; figures cross-checked
+  via search-result snippets citing the same QuickFacts tables, plus houstontx.gov/planning/Demographics
+  for Houston's official planning-department figures, censusreporter.org for Tampa, and California
+  Department of Finance January-2025 city estimates for San Francisco/Oakland/San Jose/Berkeley/
+  Fremont/Hayward). Exact figures and calculations are shown in `population_covered.csv` itself.
+
 ## Official Tesla sources
 - https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q1-2026-Update.pdf — Tesla's official Q1 2026
   shareholder/IR update PDF. Direct WebFetch failed (PDF returned as unparseable binary to the

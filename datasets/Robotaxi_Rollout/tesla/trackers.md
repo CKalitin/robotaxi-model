@@ -1,10 +1,36 @@
 # Tesla Robotaxi tracker / watcher sites
 
-Independent (non-Tesla) sites and apps that track Tesla's robotaxi fleet, found via live web
-search on 2026-07-22. All URLs below were located via actual search results or direct
-navigation — none are guessed. See `fleet_tracker_scrape.csv` for specific numbers pulled from
-these sites (or, where the site is JavaScript-rendered and WebFetch could not execute it, numbers
-as cited by journalism that visited the live site on a given date).
+Independent (non-Tesla) sites and apps that track Tesla's robotaxi fleet, originally found via
+live web search on 2026-07-22 and **re-verified/re-searched on 2026-09-23** (dozens of fresh
+WebSearch/WebFetch calls — see `sources.md`). All URLs below were located via actual search
+results or direct navigation — none are guessed. See `fleet_tracker_scrape.csv` for specific
+numbers pulled from these sites (or, where the site is JavaScript-rendered and WebFetch could not
+execute it, numbers as cited by journalism that visited the live site on a given date).
+
+---
+
+## NEW as of 2026-09-23: Robotaxi Tracker (open-robotaxi.vercel.app)
+- **URL:** https://open-robotaxi.vercel.app/
+- **What it tracks:** Tesla Robotaxi + Cybercab deployment progress, bilingual, explicitly "Not
+  affiliated with Tesla, Inc." and "Not investment advice."
+- **Methodology:** Self-described as "source-linking" every claim, and explicitly separating (1)
+  official Tesla announcements, (2) regulatory filings (TX vehicle registrations), (3) community
+  observer reports, and (4) testing/preparation activity. Distinguishes its own modeled "active
+  commercial" fleet estimate from raw TxDMV registration counts ("registered capacity ≠ daily
+  active").
+- **Coverage as of the 2026-08-31 page snapshot:** 7 "live" cities — 6 unsupervised (Austin,
+  Dallas, Houston, Miami, Tampa, Orlando) and 1 supervised (SF Bay Area) — plus a separate
+  testing/permitting list covering Phoenix, Las Vegas, Charlotte, New Orleans, and San Antonio.
+  This is the source that surfaced Charlotte and New Orleans as pre-launch testing markets not
+  present in Tesla's official 7-city announcement (see `geographies.csv`); San Antonio was named
+  by this tracker but no independent corroborating sighting/report was found in this research
+  pass, so it was not added as its own geographies.csv row.
+- **Access:** Successfully fetched directly via WebFetch on 2026-09-23 (unlike most other trackers
+  in this file, its content rendered without JS issues).
+- **Confidence:** Newly discovered this pass; methodology description is plausible and
+  well-articulated but the site's authorship/operator identity could not be independently verified
+  beyond its own self-description — treat as a useful cross-check, not a primary source on its
+  own.
 
 ---
 
@@ -37,6 +63,16 @@ as cited by journalism that visited the live site on a given date).
   table itself would not load without JS execution. All historical numbers in
   `fleet_tracker_scrape.csv` beyond the direct 2026-07-22 fetch are sourced from news outlets that
   visited/cited the live site on a specific date.
+- **Re-checked 2026-09-23:** Site is still live and still the single most-cited independent Tesla
+  robotaxi source (search results continue to reference it heavily through September 2026,
+  including in coverage of the September Cybercab launch/NHTSA audit). Direct WebFetch again
+  returned only the bare page title with no rendered data (same JS-rendering limitation as before);
+  September figures in this dataset were obtained via journalism/aggregators that cite the live
+  site (Teslarati "surges Robotaxi fleet ahead of Cybercab launch event"; NextBigFuture). Also
+  newly noted: robotaxitracker.com is attributed in September 2026 coverage to "Whole Mars
+  Catalog" in addition to the earlier Ethan McKanna attribution — this dataset was not able to
+  fully reconcile whether these are the same person/project or a rebrand/collaboration; flagged as
+  an open attribution question, not resolved as of 2026-09-23.
 
 ## Austin Tesla Robotaxi Tracker (austin-robotaxi-tracker.netlify.app)
 - **URL:** https://austin-robotaxi-tracker.netlify.app/
@@ -54,8 +90,12 @@ as cited by journalism that visited the live site on a given date).
   API endpoint (`/api/stats`) returned HTTP 404. No live numbers could be pulled from this site
   directly in this research pass; treat any figures attributed to it elsewhere as third-hand.
 
-## Texas Autonomous Fleet Tracker (texasavtracker.pages.dev)
-- **URL:** https://texasavtracker.pages.dev/
+## Texas Autonomous Fleet Tracker (texasavtracker.com, formerly texasavtracker.pages.dev)
+- **URL (current, as of 2026-09-23):** https://texasavtracker.com/ — the site appears to have
+  moved from the `texasavtracker.pages.dev` Cloudflare Pages URL used in the 2026-07-22 research
+  pass to its own `texasavtracker.com` domain by September 2026; both were checked in this update
+  and the `.com` domain is now the one surfacing in search results and news citations.
+- **Prior URL:** https://texasavtracker.pages.dev/
 - **What it tracks:** Official Texas DMV Automated Vehicle Registry data, created under Texas SB
   2807, which took effect 2026-05-28 and requires AV companies testing/deploying in Texas to
   register fleet counts with the state. The tracker lists Tesla, Waymo, Zoox, and Avride, with
@@ -72,6 +112,12 @@ as cited by journalism that visited the live site on a given date).
   from TechCrunch (2026-05-28: Tesla 42 / Waymo 577 / Avride 317 / Nuro 47, statewide) and
   Benzinga (2026-07-03: Tesla ~175 statewide), both of which cite this tracker/the underlying DMV
   data directly.
+- **Re-checked 2026-09-23 (at the new texasavtracker.com URL):** Same JS-rendering limitation —
+  direct WebFetch again returned only "Loading fleet history..." / "Loading verified
+  boundaries..." placeholders. Site now describes its own methodology (per secondary citations) as
+  polling the TxDMV Motor Carrier Credentialing System hourly. Current-quarter numbers obtained via
+  NextBigFuture's September 2026 coverage: Tesla 420 (375 Model Y + 45 Cybercab) vs Waymo 988,
+  both as of 2026-09-02.
 
 ## Tesla Robotaxi Safety Tracker (robotaxi-safety-tracker.com)
 - **URL:** https://robotaxi-safety-tracker.com/ (expansion/city table at
@@ -92,6 +138,10 @@ as cited by journalism that visited the live site on a given date).
   ongoing (if not necessarily daily) updates. Page content fetched 2026-07-22 was explicitly
   labeled "as of January 2026" with some fields showing placeholder ("--") values, suggesting the
   page had gone stale for at least several months by the time of this research.
+- **Re-checked 2026-09-23:** Not re-fetched directly in this pass (budget was prioritized toward
+  higher-yield sources); still surfaces in general searches for Tesla robotaxi tracking sites.
+  Status/freshness as of September 2026 not independently re-verified — treat the January-2026
+  vintage caveat above as still the operative one until a future pass re-fetches it directly.
 
 ## The Charge Port — "Robotaxi Status" tracker
 - **URL:** https://thechargeport.com/robotaxi-tracker
@@ -105,6 +155,13 @@ as cited by journalism that visited the live site on a given date).
   a last-verification date of 2026-07-18 when fetched on 2026-07-22.
 - **Coverage:** Multi-operator, national (US) — not spotting-based; it is closer to a curated news
   digest/status board than a live vehicle registry.
+- **Re-checked 2026-09-23:** Still active and well-maintained — re-fetched directly via WebFetch,
+  page now self-titled "Robotaxi Status September 2026" with a stated last-verified date of
+  2026-09-05, consistent with its claimed monthly reconciliation cadence. Confirms Tesla active in
+  7 US metros (Austin, Dallas, Houston, Miami, Orlando, Tampa, SF Bay Area) with Phoenix and Las
+  Vegas both still listed as "Preparations Underway." States plainly that "Tesla does not disclose
+  how many vehicles now run unsupervised," using the 420-vehicle TxDMV figure as the best available
+  proxy for Texas.
 
 ## Robo Tracker (robotracker.app)
 - **URL:** https://robotracker.app/
@@ -155,3 +212,13 @@ as cited by journalism that visited the live site on a given date).
   Orlando/Tampa 2026-07-21) relies on one-off journalist field reports rather than a persistent
   tracker site/URL. Expect robotaxitracker.com and/or successor sites to add these areas as the
   services mature.
+
+### Update 2026-09-23
+- Miami, Orlando, and Tampa are now folded into the general multi-city trackers'
+  coverage (robotaxitracker.com, open-robotaxi.vercel.app, thechargeport.com all now list all 7
+  active Tesla metros as of September 2026), so the "no dedicated tracker" gap noted above for
+  those three cities has effectively closed — they are simply not broken out with their own
+  standalone site the way robotaxitracker.com breaks out Austin/Dallas/Houston.
+  Phoenix and Las Vegas still have no dedicated tracker (unsurprising, since neither has launched).
+  robotracker.app was NOT re-attempted this pass (was rate-limited/unreachable on 2026-07-22);
+  status unknown.
