@@ -1,3 +1,4 @@
+import os
 import pandas
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,7 +9,7 @@ distance_fields_pretty = ['0 to 10 miles', '10 to 25 miles', '25 to 50 miles', '
 
 fields = [f"{mode}{distance}" for mode in mode_fields for distance in distance_fields]
 
-save_dir = "scripts/NHTS_OD_2022/"
+output_dir = "outputs/NHTS_OD_2022/"  # charts in stacked_bar/ and pie/, tables in csv/
 show = False  # Set to False to skip showing plots
 
 def get_aggregated_trips_by_distance_mode():
@@ -52,8 +53,9 @@ def plot_aggregated_trips_by_distance_mode(aggregated_trips):
     plt.tight_layout()
     
     # Save the plot
-    plt.savefig(f'{save_dir}trips_by_mode_distance.png', dpi=100, bbox_inches='tight')
-    print(f"Plot saved as '{save_dir}trips_by_mode_distance.png'")
+    os.makedirs(f'{output_dir}stacked_bar', exist_ok=True)
+    plt.savefig(f'{output_dir}stacked_bar/trips_by_mode_distance.png', dpi=100, bbox_inches='tight')
+    print(f"Plot saved as '{output_dir}stacked_bar/trips_by_mode_distance.png'")
     if show:
         plt.show()
     else:
@@ -70,8 +72,9 @@ def save_aggregated_trips_csv(aggregated_trips):
     
     df = pandas.DataFrame(data, index=distance_fields_pretty)
     df.index.name = 'Distance'
-    df.to_csv(f'{save_dir}aggregated_trips.csv')
-    print(f"CSV saved as '{save_dir}aggregated_trips.csv'")
+    os.makedirs(f'{output_dir}csv', exist_ok=True)
+    df.to_csv(f'{output_dir}csv/aggregated_trips.csv')
+    print(f"CSV saved as '{output_dir}csv/aggregated_trips.csv'")
 
 def plot_pie_charts_by_mode(aggregated_trips):
     """Generate separate pie charts for each mode."""
@@ -87,8 +90,9 @@ def plot_pie_charts_by_mode(aggregated_trips):
             wedges, texts, autotexts = plt.pie(nonzero_trips, autopct='%1.1f%%', startangle=90)
             plt.legend(wedges, nonzero_labels, title="Distance Ranges", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
             plt.title(f'{mode_names[mode]} - Total: {sum(nonzero_trips):,} trips')
-            plt.savefig(f'{save_dir}pie_{mode}.png', dpi=100, bbox_inches='tight')
-            print(f"Pie chart saved as '{save_dir}pie_{mode}.png'")
+            os.makedirs(f'{output_dir}pie', exist_ok=True)
+            plt.savefig(f'{output_dir}pie/pie_{mode}.png', dpi=100, bbox_inches='tight')
+            print(f"Pie chart saved as '{output_dir}pie/pie_{mode}.png'")
             if show:
                 plt.show()
             else:
