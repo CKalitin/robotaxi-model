@@ -1,7 +1,7 @@
 """Builds the Robotaxi_Rollout chart set (Tesla + Waymo) from the CSVs in
 datasets/Robotaxi_Rollout/. Run from repo root: python3 scripts/Robotaxi_Rollout/build_charts.py
 
-Outputs PNGs into datasets/Robotaxi_Rollout/charts/{tesla,waymo,combined}/.
+Outputs PNGs into outputs/Robotaxi_Rollout/{tesla,waymo,combined}/.
 """
 import matplotlib
 matplotlib.use("Agg")
@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "datasets" / "Robotaxi_Rollout"
-OUT = DATA / "charts"
+OUT = ROOT / "outputs" / "Robotaxi_Rollout"
 TODAY = pd.Timestamp("2026-09-23")
 SOURCE_NOTE = "Source: datasets/Robotaxi_Rollout/ (this repo) — official disclosures + community trackers, compiled 2026-09-23"
 
